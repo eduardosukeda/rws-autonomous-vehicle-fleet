@@ -4,6 +4,9 @@ import br.com.fiap.rwsautonomousvehiclefleet.dto.VehicleDTO;
 import br.com.fiap.rwsautonomousvehiclefleet.entity.Vehicle;
 import br.com.fiap.rwsautonomousvehiclefleet.repository.VehicleRepository;
 import br.com.fiap.rwsautonomousvehiclefleet.service.VehicleService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -42,6 +45,14 @@ public class VehicleServiceImpl implements VehicleService {
     public void delete(Integer id) {
         Vehicle vehicle = vehicleRepository.getOne(id);
         vehicleRepository.delete(vehicle);
+    }
+
+    @Override
+    public VehicleDTO findVehicleAvailable(){
+        Pageable topOne = PageRequest.of(0, 1);
+        Page pageVehicle = vehicleRepository.findVehicleAvailable(topOne);
+        Vehicle vehicle = (Vehicle) pageVehicle.getContent().get(0);
+        return convertToDTO(vehicle);
     }
 
     private VehicleDTO convertToDTO(Vehicle vehicle) {

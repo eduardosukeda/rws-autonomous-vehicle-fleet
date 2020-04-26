@@ -1,47 +1,62 @@
 package br.com.fiap.rwsautonomousvehiclefleet.dto;
 
 import java.math.BigDecimal;
-import java.sql.Time;
 
 public class CourseDTO {
 
-    private Integer idUser;
-    private Integer idVehicle;
+    private String id;
+    private Integer userId;
+    private Integer vehicleId;
     private BigDecimal price;
     private String departureAddress;
     private String destinationAddress;
-    private Time timeToUser;
-    private Time timeToDestination;
+    private Integer timeToUser;
+    private Integer timeToDestination;
+    private Integer timeLeftToReachDestination;
+    private Integer timeLeftToReachUser;
+    private String vehicleStartingLocation;
     private Integer status;
 
     public CourseDTO() {
     }
 
-    public CourseDTO(Integer idUser, Integer idVehicle, BigDecimal price, String departureAddress, String destinationAddress, Time timeToUser, Time timeToDestination, Integer status) {
-        this.idUser = idUser;
-        this.idVehicle = idVehicle;
+    public CourseDTO(String id, Integer userId, Integer vehicleId, BigDecimal price, String departureAddress, String destinationAddress, Integer timeToUser, Integer timeToDestination, Integer timeLeftToReachDestination, Integer timeLeftToReachUser, String vehicleStartingLocation, Integer status) {
+        this.id = id;
+        this.userId = userId;
+        this.vehicleId = vehicleId;
         this.price = price;
         this.departureAddress = departureAddress;
         this.destinationAddress = destinationAddress;
         this.timeToUser = timeToUser;
         this.timeToDestination = timeToDestination;
+        this.timeLeftToReachDestination = timeLeftToReachDestination;
+        this.timeLeftToReachUser = timeLeftToReachUser;
+        this.vehicleStartingLocation = vehicleStartingLocation;
         this.status = status;
     }
 
-    public Integer getIdUser() {
-        return idUser;
+    public String getId() {
+        return id;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public Integer getIdVehicle() {
-        return idVehicle;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setIdVehicle(Integer idVehicle) {
-        this.idVehicle = idVehicle;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(Integer vehicleId) {
+        this.vehicleId = vehicleId;
     }
 
     public BigDecimal getPrice() {
@@ -68,20 +83,44 @@ public class CourseDTO {
         this.destinationAddress = destinationAddress;
     }
 
-    public Time getTimeToUser() {
+    public Integer getTimeToUser() {
         return timeToUser;
     }
 
-    public void setTimeToUser(Time timeToUser) {
+    public void setTimeToUser(Integer timeToUser) {
         this.timeToUser = timeToUser;
     }
 
-    public Time getTimeToDestination() {
+    public Integer getTimeToDestination() {
         return timeToDestination;
     }
 
-    public void setTimeToDestination(Time timeToDestination) {
+    public void setTimeToDestination(Integer timeToDestination) {
         this.timeToDestination = timeToDestination;
+    }
+
+    public Integer getTimeLeftToReachDestination() {
+        return timeLeftToReachDestination;
+    }
+
+    public void setTimeLeftToReachDestination(Integer timeLeftToReachDestination) {
+        this.timeLeftToReachDestination = timeLeftToReachDestination;
+    }
+
+    public Integer getTimeLeftToReachUser() {
+        return timeLeftToReachUser;
+    }
+
+    public void setTimeLeftToReachUser(Integer timeLeftToReachUser) {
+        this.timeLeftToReachUser = timeLeftToReachUser;
+    }
+
+    public String getVehicleStartingLocation() {
+        return vehicleStartingLocation;
+    }
+
+    public void setVehicleStartingLocation(String vehicleStartingLocation) {
+        this.vehicleStartingLocation = vehicleStartingLocation;
     }
 
     public Integer getStatus() {

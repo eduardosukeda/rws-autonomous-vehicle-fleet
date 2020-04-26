@@ -1,18 +1,18 @@
 package br.com.fiap.rwsautonomousvehiclefleet.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Time;
 
 @Entity
 @Table(name = "TB_COURSE")
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    private String id;
     @OneToOne
     private User user;
     @OneToOne
@@ -20,18 +20,21 @@ public class Course {
     private BigDecimal price;
     private String departureAddress;
     private String destinationAddress;
-    private Time timeToUser;
-    private Time timeToDestination;
+    private Integer timeToUser;
+    private Integer timeToDestination;
+    private Integer timeLeftToReachDestination;
+    private Integer timeLeftToReachUser;
+    private String vehicleStartingLocation;
     private Integer status;
 
     public Course() {
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -75,20 +78,44 @@ public class Course {
         this.destinationAddress = destinationAddress;
     }
 
-    public Time getTimeToUser() {
+    public Integer getTimeToUser() {
         return timeToUser;
     }
 
-    public void setTimeToUser(Time timeToUser) {
+    public void setTimeToUser(Integer timeToUser) {
         this.timeToUser = timeToUser;
     }
 
-    public Time getTimeToDestination() {
+    public Integer getTimeToDestination() {
         return timeToDestination;
     }
 
-    public void setTimeToDestination(Time timeToDestination) {
+    public void setTimeToDestination(Integer timeToDestination) {
         this.timeToDestination = timeToDestination;
+    }
+
+    public Integer getTimeLeftToReachDestination() {
+        return timeLeftToReachDestination;
+    }
+
+    public void setTimeLeftToReachDestination(Integer timeLeftToReachDestination) {
+        this.timeLeftToReachDestination = timeLeftToReachDestination;
+    }
+
+    public Integer getTimeLeftToReachUser() {
+        return timeLeftToReachUser;
+    }
+
+    public void setTimeLeftToReachUser(Integer timeLeftToReachUser) {
+        this.timeLeftToReachUser = timeLeftToReachUser;
+    }
+
+    public String getVehicleStartingLocation() {
+        return vehicleStartingLocation;
+    }
+
+    public void setVehicleStartingLocation(String vehicleStartingLocation) {
+        this.vehicleStartingLocation = vehicleStartingLocation;
     }
 
     public Integer getStatus() {

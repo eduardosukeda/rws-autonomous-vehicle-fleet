@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("vehicles")
+@RequestMapping("vehicle")
 public class VehicleController {
 
     private final VehicleService vehicleService;

@@ -8,4 +8,5 @@ public interface VehicleService {
     public VehicleDTO create(VehicleDTO vehicleDTO);
     public VehicleDTO update(Integer id, VehicleDTO vehicleDTO);
     public void delete(Integer id);
+    public VehicleDTO findVehicleAvailable();
 }
