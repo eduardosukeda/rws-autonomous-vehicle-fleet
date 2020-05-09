@@ -52,32 +52,43 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public CourseDTO get(String id) {
-        return convertToGetDTO(courseRepository.getOne(id));
+        return convertCourseToDTO(courseRepository.getOne(id));
     }
 
     @Override
-    public CourseDTO update(String id, StatusEnum status) {
-        return null;
+    @Async
+    public void update(String id, StatusEnum status) {
+        switch (status) {
+            case EM_CURSO:
+                startCourse(id);
+                break;
+            case CANCELADO:
+                Course course = courseRepository.getOne(id);
+                course.setStatus(status.getValor());
+                convertCourseToDTO(courseRepository.save(course));
+                break;
+            default:
+                break;
+        }
     }
 
     @Async
-    public void start() {
-        Integer min = 1;
-        Integer max = 5;
-        Integer numRandom = (int) (Math.random() * (max - min + 1) + min);
+    public void startCourse(String id) {
+        Course course = courseRepository.getOne(id);
+        Integer timeLeftToReachUser = course.getTimeLeftToReachUser();
         int minute = 0;
-        Integer time = numRandom;
 
         try {
-            for (int i = 1; i <= (numRandom * 60); i++) {
+            for (int i = 1; i <= (timeLeftToReachUser * 60); i++) {
+
                 if (minute == 0) {
-                    System.out.println("" + time.toString());
+                    System.out.println("" + timeLeftToReachUser.toString());
                 }
                 minute++;
 
                 if (minute == 60) {
-                    time--;
-                    System.out.println("" + time.toString());
+                    timeLeftToReachUser--;
+                    System.out.println("" + timeLeftToReachUser.toString());
                     minute = 0;
                 }
                 Thread.sleep(1000);
@@ -129,7 +140,7 @@ public class CourseServiceImpl implements CourseService {
         return courseDTO;
     }
 
-    private CourseDTO convertToGetDTO(Course course) {
+    private CourseDTO convertCourseToDTO(Course course) {
 
         CourseDTO courseDTO = new CourseDTO();
         courseDTO.setId(course.getId());

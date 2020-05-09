@@ -4,6 +4,7 @@ import br.com.fiap.rwsautonomousvehiclefleet.dto.CourseDTO;
 import br.com.fiap.rwsautonomousvehiclefleet.dto.StatusEnum;
 import br.com.fiap.rwsautonomousvehiclefleet.service.CourseService;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,7 +29,8 @@ public class CourseController {
     }
 
     @PutMapping("{id}/{status}")
-    public CourseDTO update(@PathVariable String id, @PathVariable StatusEnum status){
-        return courseService.update(id, status);
+    @Async
+    public void update(@PathVariable String id, @PathVariable StatusEnum status){
+        courseService.update(id, status);
     }
 }

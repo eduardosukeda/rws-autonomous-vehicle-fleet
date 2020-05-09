@@ -7,5 +7,5 @@ public interface CourseService {
 
     public CourseDTO create(Integer userId, String departureAddress, String destinationAddress);
     public CourseDTO get(String id);
-    public CourseDTO update(String id, StatusEnum status);
+    public void update(String id, StatusEnum status);
 }
