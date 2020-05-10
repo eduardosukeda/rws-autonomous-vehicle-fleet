@@ -14,25 +14,9 @@ public class CourseDTO {
     private Integer timeToDestination;
     private Integer timeLeftToReachDestination;
     private Integer timeLeftToReachUser;
-    private String vehicleStartingLocation;
     private Integer status;
 
     public CourseDTO() {
-    }
-
-    public CourseDTO(String id, Integer userId, Integer vehicleId, BigDecimal price, String departureAddress, String destinationAddress, Integer timeToUser, Integer timeToDestination, Integer timeLeftToReachDestination, Integer timeLeftToReachUser, String vehicleStartingLocation, Integer status) {
-        this.id = id;
-        this.userId = userId;
-        this.vehicleId = vehicleId;
-        this.price = price;
-        this.departureAddress = departureAddress;
-        this.destinationAddress = destinationAddress;
-        this.timeToUser = timeToUser;
-        this.timeToDestination = timeToDestination;
-        this.timeLeftToReachDestination = timeLeftToReachDestination;
-        this.timeLeftToReachUser = timeLeftToReachUser;
-        this.vehicleStartingLocation = vehicleStartingLocation;
-        this.status = status;
     }
 
     public String getId() {
@@ -113,14 +97,6 @@ public class CourseDTO {
 
     public void setTimeLeftToReachUser(Integer timeLeftToReachUser) {
         this.timeLeftToReachUser = timeLeftToReachUser;
-    }
-
-    public String getVehicleStartingLocation() {
-        return vehicleStartingLocation;
-    }
-
-    public void setVehicleStartingLocation(String vehicleStartingLocation) {
-        this.vehicleStartingLocation = vehicleStartingLocation;
     }
 
     public Integer getStatus() {

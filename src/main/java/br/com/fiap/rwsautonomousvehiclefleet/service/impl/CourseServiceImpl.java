@@ -45,7 +45,6 @@ public class CourseServiceImpl implements CourseService {
         courseDTO.setPrice(Util.generatePriceCourse());
         User user = userRepository.getOne(userId);
         Vehicle vehicle = findVehicleAvailable();
-        courseDTO.setVehicleStartingLocation(vehicle.getLocalization());
         Course course = courseRepository.save(convertToEntity(courseDTO, user, vehicle));
         return convertToDTO(course, user, vehicle);
     }
@@ -135,7 +134,6 @@ public class CourseServiceImpl implements CourseService {
         course.setTimeToDestination(courseDTO.getTimeToDestination());
         course.setTimeLeftToReachDestination(courseDTO.getTimeLeftToReachDestination());
         course.setTimeLeftToReachUser(courseDTO.getTimeLeftToReachUser());
-        course.setVehicleStartingLocation(courseDTO.getVehicleStartingLocation());
         course.setStatus(courseDTO.getStatus());
         return course;
     }
@@ -153,7 +151,6 @@ public class CourseServiceImpl implements CourseService {
         courseDTO.setTimeToDestination(course.getTimeToDestination());
         courseDTO.setTimeLeftToReachDestination(course.getTimeLeftToReachDestination());
         courseDTO.setTimeLeftToReachUser(course.getTimeLeftToReachUser());
-        courseDTO.setVehicleStartingLocation(vehicle.getLocalization());
         courseDTO.setStatus(course.getStatus());
         return courseDTO;
     }
@@ -171,7 +168,6 @@ public class CourseServiceImpl implements CourseService {
         courseDTO.setTimeToDestination(course.getTimeToDestination());
         courseDTO.setTimeLeftToReachDestination(course.getTimeLeftToReachDestination());
         courseDTO.setTimeLeftToReachUser(course.getTimeLeftToReachUser());
-        courseDTO.setVehicleStartingLocation(course.getVehicleStartingLocation());
         courseDTO.setStatus(course.getStatus());
         return courseDTO;
     }
