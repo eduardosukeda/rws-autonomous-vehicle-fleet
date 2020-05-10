@@ -75,24 +75,42 @@ public class CourseServiceImpl implements CourseService {
     @Async
     public void startCourse(String id) {
         Course course = courseRepository.getOne(id);
+        Integer timeToUser = course.getTimeToUser();
+        Integer timeToDestination = course.getTimeToDestination();
         Integer timeLeftToReachUser = course.getTimeLeftToReachUser();
-        int minute = 0;
+        Integer timeLeftToReachDestination = course.getTimeLeftToReachDestination();
+        int minuteToUser = 0;
+        int minuteToDestination = 0;
 
         try {
-            for (int i = 1; i <= (timeLeftToReachUser * 60); i++) {
-
-                if (minute == 0) {
-                    System.out.println("" + timeLeftToReachUser.toString());
-                }
-                minute++;
-
-                if (minute == 60) {
-                    timeLeftToReachUser--;
-                    System.out.println("" + timeLeftToReachUser.toString());
-                    minute = 0;
+            for (int i = 1; i <= (timeToUser * 60); i++) {
+                minuteToUser++;
+                if (minuteToUser == 60) {
+                    timeLeftToReachUser = timeLeftToReachUser - 1;
+                    course.setTimeLeftToReachUser(timeLeftToReachUser);
+                    courseRepository.save(course);
+                    minuteToUser = 0;
                 }
                 Thread.sleep(1000);
                 Thread.yield();
+            }
+
+            if (timeLeftToReachUser.equals(0)) {
+                for (int i = 1; i <= (timeToDestination * 60); i++) {
+                    minuteToDestination++;
+                    if (minuteToDestination == 60) {
+                        timeLeftToReachDestination = timeLeftToReachDestination - 1;
+                        course.setTimeLeftToReachDestination(timeLeftToReachDestination);
+                        courseRepository.save(course);
+                        minuteToDestination = 0;
+                    }
+                    Thread.sleep(1000);
+                    Thread.yield();
+                }
+                if (timeLeftToReachDestination.equals(0)) {
+                    course.setStatus(StatusEnum.FINALIZADO.getValor());
+                    courseRepository.save(course);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
