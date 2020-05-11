@@ -152,6 +152,10 @@ public class CourseServiceImpl implements CourseService {
         courseDTO.setTimeLeftToReachDestination(course.getTimeLeftToReachDestination());
         courseDTO.setTimeLeftToReachUser(course.getTimeLeftToReachUser());
         courseDTO.setStatus(course.getStatus());
+        courseDTO.setCarBrand(vehicle.getCarBrand());
+        courseDTO.setCarModel(vehicle.getCarModel());
+        courseDTO.setCarLicensePlate(vehicle.getCarLicensePlate());
+        courseDTO.setLocalization(vehicle.getLocalization());
         return courseDTO;
     }
 

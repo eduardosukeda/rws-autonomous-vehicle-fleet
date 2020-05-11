@@ -15,6 +15,10 @@ public class CourseDTO {
     private Integer timeLeftToReachDestination;
     private Integer timeLeftToReachUser;
     private Integer status;
+    private String carBrand;
+    private String carModel;
+    private String carLicensePlate;
+    private String localization;
 
     public CourseDTO() {
     }
@@ -105,5 +109,37 @@ public class CourseDTO {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getCarBrand() {
+        return carBrand;
+    }
+
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
+    public String getCarLicensePlate() {
+        return carLicensePlate;
+    }
+
+    public void setCarLicensePlate(String carLicensePlate) {
+        this.carLicensePlate = carLicensePlate;
+    }
+
+    public String getLocalization() {
+        return localization;
+    }
+
+    public void setLocalization(String localization) {
+        this.localization = localization;
     }
 }
