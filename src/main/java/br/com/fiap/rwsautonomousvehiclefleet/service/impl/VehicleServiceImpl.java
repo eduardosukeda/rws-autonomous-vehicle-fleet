@@ -9,6 +9,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class VehicleServiceImpl implements VehicleService {
 
@@ -16,6 +19,18 @@ public class VehicleServiceImpl implements VehicleService {
 
     public VehicleServiceImpl(VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
+    }
+
+    @Override
+    public List<VehicleDTO> getAll() {
+
+        List<VehicleDTO> listVehicleDTO = new ArrayList<VehicleDTO>();
+
+        for (int i = 0; i < vehicleRepository.findAll().size(); i++) {
+            listVehicleDTO.add(convertToDTO(vehicleRepository.findAll().get(i)));
+        }
+
+        return listVehicleDTO;
     }
 
     @Override
@@ -58,6 +73,7 @@ public class VehicleServiceImpl implements VehicleService {
     private VehicleDTO convertToDTO(Vehicle vehicle) {
 
         VehicleDTO vehicleDTO = new VehicleDTO();
+        vehicleDTO.setId(vehicle.getId());
         vehicleDTO.setAvailable(vehicle.getAvailable());
         vehicleDTO.setCarBrand(vehicle.getCarBrand());
         vehicleDTO.setCarLicensePlate(vehicle.getCarLicensePlate());

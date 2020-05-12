@@ -6,6 +6,9 @@ import br.com.fiap.rwsautonomousvehiclefleet.repository.UserRepository;
 import br.com.fiap.rwsautonomousvehiclefleet.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -13,6 +16,18 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @Override
+    public List<UserDTO> getAll() {
+
+        List<UserDTO> listUserDTO = new ArrayList<UserDTO>();
+
+        for (int i = 0; i < userRepository.findAll().size(); i++) {
+            listUserDTO.add(convertToDTO(userRepository.findAll().get(i)));
+        }
+
+        return listUserDTO;
     }
 
     @Override
@@ -44,12 +59,13 @@ public class UserServiceImpl implements UserService {
     private UserDTO convertToDTO(User user) {
 
         UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
         userDTO.setCpf(user.getCpf());
         userDTO.setName(user.getName());
         return userDTO;
     }
 
-    private User convertToEntity(UserDTO userDTO){
+    private User convertToEntity(UserDTO userDTO) {
 
         User user = new User();
         user.setCpf(userDTO.getCpf());

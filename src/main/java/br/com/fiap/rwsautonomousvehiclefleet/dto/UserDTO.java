@@ -2,15 +2,25 @@ package br.com.fiap.rwsautonomousvehiclefleet.dto;
 
 public class UserDTO {
 
+    private Integer id;
     private String name;
     private String cpf;
 
     public UserDTO() {
     }
 
-    public UserDTO(String name, String cpf) {
+    public UserDTO(Integer id, String name, String cpf) {
+        this.id = id;
         this.name = name;
         this.cpf = cpf;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

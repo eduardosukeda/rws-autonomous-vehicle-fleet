@@ -2,6 +2,7 @@ package br.com.fiap.rwsautonomousvehiclefleet.dto;
 
 public class VehicleDTO {
 
+    private Integer id;
     private Boolean available;
     private String carBrand;
     private String carModel;
@@ -11,12 +12,21 @@ public class VehicleDTO {
     public VehicleDTO() {
     }
 
-    public VehicleDTO(Boolean available, String carBrand, String carModel, String carLicensePlate, String localization) {
+    public VehicleDTO(Integer id, Boolean available, String carBrand, String carModel, String carLicensePlate, String localization) {
+        this.id = id;
         this.available = available;
         this.carBrand = carBrand;
         this.carModel = carModel;
         this.carLicensePlate = carLicensePlate;
         this.localization = localization;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Boolean getAvailable() {
