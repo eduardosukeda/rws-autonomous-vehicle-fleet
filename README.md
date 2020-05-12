@@ -8,8 +8,8 @@
 2 - Possuir uma IDE para execução.
 
 3 - Incluir um usuário e carro nas seguintes urls
-  https://rws-autonomous-vehicle-fleet.herokuapp.com/user
-  https://rws-autonomous-vehicle-fleet.herokuapp.com/vehicle
+  - https://rws-autonomous-vehicle-fleet.herokuapp.com/user
+  - https://rws-autonomous-vehicle-fleet.herokuapp.com/vehicle
 
 
 ## Spring Framework
