@@ -1,7 +1,7 @@
 # rws-autonomous-vehicle-fleet
 
 
-## Pré-requisitos para execução do rws-batch-fiap-credit-card
+## Pré-requisitos para execução do # rws-autonomous-vehicle-fleet
 
 1 - Para executar o projeto é necessário ter o JRE 8 ou JDK 8 instalado.
 
